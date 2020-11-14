@@ -281,7 +281,8 @@ function get_all_x11_modes()
     local info
     local line
     local verbose_info=()
-    local output="$($XRANDR --verbose | grep " connected" | awk '{ print $1 }')"
+    local output="$($XRANDR --verbose | awk '/ connected/ { print $1 }')"
+
 
     while read -r line; do
         # scan for line that contains bracketed mode id
